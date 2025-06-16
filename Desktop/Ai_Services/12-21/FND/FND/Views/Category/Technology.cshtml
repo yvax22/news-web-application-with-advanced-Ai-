@@ -1,0 +1,19 @@
+﻿<!-- list News -->
+@model List<News>
+<div class="container row text-center">
+    @foreach (var item in Model)
+    { @if (@item.CategoryId == 4)
+        {
+            <div class="  col-md-4 pb-1 pb-md-0  ">
+                <div class="card">
+                    <img class="card-img-top" src="~/images/@item.image" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Title</h5>
+                        <p class="card-text">@item.Content </p>
+                        
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

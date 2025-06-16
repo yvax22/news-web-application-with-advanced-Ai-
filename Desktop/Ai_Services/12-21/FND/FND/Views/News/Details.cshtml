@@ -1,0 +1,85 @@
+﻿@model FND.Models.News
+
+@{
+    var defaultImg = "/images/default-news.png"; 
+    string imgSrc = Model.image?.StartsWith("http", StringComparison.OrdinalIgnoreCase) == true
+        ? Model.image
+        : Url.Content($"~/images/{Model.image}");
+    var likesDict = ViewBag.LikesCount as Dictionary<int, int>;
+    var commentsDict = ViewBag.CommentsDict as Dictionary<int, int>;
+}
+
+<div class="container mt-5" style="max-width: 900px;">
+    <div class="card shadow-lg">
+        <img src="@imgSrc" alt="صورة الخبر" class="card-img-top rounded-top" style="height: 420px; object-fit: cover;" />
+
+        <div class="card-body">
+            <!-- العنوان -->
+            <h2 class="card-title text-center text-dark mb-3">@Model?.Title</h2>
+
+            <!-- الملخص -->
+            @if (!string.IsNullOrWhiteSpace(Model?.Abstract))
+            {
+                <p class="text-secondary fs-5 text-center mb-4" style="line-height: 1.8;">
+                    <i class="bi bi-info-circle text-primary"></i> @Model.Abstract
+                </p>
+            }
+
+            <!-- تاريخ النشر -->
+            @if (Model?.CreatedAt.HasValue == true)
+            {
+                <p class="text-muted text-end mb-4">
+                    🕒 تاريخ النشر: @Model.CreatedAt.Value.ToString("dd MMMM yyyy - HH:mm")
+                </p>
+            }
+
+            <!-- المحتوى الكامل -->
+            <p class="card-text lead" style="line-height:1.9;">
+                @Model?.Content
+            </p>
+
+            <!-- تصنيف مزيّف -->
+            @if (Model?.IsFake == true)
+            {
+                <div class="alert alert-danger mt-4">
+                    ⚠️ هذا الخبر تم تصنيفه كمزيّف <strong>(Fake)</strong>.
+                </div>
+            }
+
+            <!-- 💬 التعليقات -->
+            <h4 class="mt-5 mb-3">💬 التعليقات السابقة</h4>
+            @if (Model.Comments != null && Model.Comments.Any())
+            {
+                <ul class="list-group mb-4">
+                    @foreach (var comment in Model.Comments.OrderByDescending(c => c.CreatedDate))
+                    {
+                        <li class="list-group-item">
+                            <strong>@comment.User?.UserName</strong>
+                            <span>@comment.Content</span>
+                            <div class="text-muted" style="font-size: 12px;">
+                                🕒 @comment.CreatedDate.ToString("yyyy/MM/dd HH:mm")
+                            </div>
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <div class="alert alert-light border">لا توجد تعليقات بعد.</div>
+            }
+
+            <!-- ➕ نموذج التعليق -->
+            <h4>➕ إضافة تعليق</h4>
+            <form asp-action="PostComment" method="post">
+                <input type="hidden" name="NewsId" value="@Model.Id" />
+                <div class="form-group">
+                    <textarea name="Content" class="form-control" placeholder="اكتب تعليقك هنا..." rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-success mt-2">إرسال</button>
+            </form>
+
+            <!-- زر الرجوع -->
+            <a asp-controller="News" asp-action="AllNews" class="btn btn-secondary mt-4">← العودة لكل الأخبار</a>
+        </div>
+    </div>
+</div>

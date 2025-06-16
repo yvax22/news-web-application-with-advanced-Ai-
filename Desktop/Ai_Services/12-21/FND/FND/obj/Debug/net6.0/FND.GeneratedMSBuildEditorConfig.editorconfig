@@ -1,0 +1,196 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = FND
+build_property.RootNamespace = FND
+build_property.ProjectDir = c:\Users\yasee\Desktop\Ai_Services\12-21\FND\FND\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = c:\Users\yasee\Desktop\Ai_Services\12-21\FND\FND
+build_property._RazorSourceGeneratorDebug = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Account/AddAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBZGRBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Account/AddPublisher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBZGRQdWJsaXNoZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Category/Category.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQ2F0ZWdvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Category/Crime.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQ3JpbWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Category/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Category/Economic.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcRWNvbm9taWMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Category/Education.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcRWR1Y2F0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Category/Entertainment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcRW50ZXJ0YWlubWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Category/Food.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcRm9vZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Category/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Category/New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Category/Political.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcUG9saXRpY2FsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Category/QueerVoices.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcUXVlZXJWb2ljZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Category/Sport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcU3BvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Category/StyleAndBeauty.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcU3R5bGVBbmRCZWF1dHkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Category/Technology.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcVGVjaG5vbG9neS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/News/AllNews.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xBbGxOZXdzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/News/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/News/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/News/FetchNewsFromRss.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xGZXRjaE5ld3NGcm9tUnNzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/News/GetComments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xHZXRDb21tZW50cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/News/New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xOZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/News/NewComment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xOZXdDb21tZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/News/NewsAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xOZXdzQWRtaW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/News/NewsByCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xOZXdzQnlDYXRlZ29yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/News/newsrecommendation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xuZXdzcmVjb21tZW5kYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/News/NoResults.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xOb1Jlc3VsdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/News/RecommendedNews.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xSZWNvbW1lbmRlZE5ld3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/News/SearchResult.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xTZWFyY2hSZXN1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Rag/Chat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFnXENoYXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Rag/History.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFnXEhpc3RvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Rag/summarize.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFnXHN1bW1hcml6ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Roles/New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Services/uploadImage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZXNcdXBsb2FkSW1hZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Shared/_InteractionButtons.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9JbnRlcmFjdGlvbkJ1dHRvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/Users/Users.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcVXNlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/yasee/Desktop/Ai_Services/12-21/FND/FND/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

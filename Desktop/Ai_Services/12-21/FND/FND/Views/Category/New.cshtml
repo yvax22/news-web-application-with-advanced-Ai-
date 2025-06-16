@@ -1,0 +1,15 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "New";
+}
+
+<h1>New</h1>
+<form method="post" action="/Category/SaveNew">
+    <div>
+        <label>Name</label>
+        <input type="text" name="Name" value="@Model.Name" class="form-control" />
+    </div>
+  <br />
+    <input type="submit" class="btn btn-primary" value="Create" />
+</form>
+<a href="/Category/Index">Back To List</a>

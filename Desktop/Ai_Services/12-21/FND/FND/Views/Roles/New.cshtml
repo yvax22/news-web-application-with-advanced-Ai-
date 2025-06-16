@@ -1,0 +1,33 @@
+﻿@model FND.ViewModel.RoleViewModel
+
+@{
+    ViewData["Title"] = "إضافة دور جديد";
+}
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow-sm p-4" style="max-width: 500px; width: 100%;">
+        <h3 class="text-center mb-4">➕ إضافة دور جديد</h3>
+
+        <form asp-action="New">
+            <div asp-validation-summary="All" class="alert alert-danger" role="alert"></div>
+
+            <div class="mb-3">
+                <label asp-for="RoleName" class="form-label">اسم الدور</label>
+                <input asp-for="RoleName" class="form-control" placeholder="أدخل اسم الدور" />
+                <span asp-validation-for="RoleName" class="text-danger small"></span>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg w-100">إنشاء</button>
+            </div>
+        </form>
+
+        <div class="mt-3 text-center">
+            <a asp-action="Index" class="text-decoration-none">🔙 الرجوع إلى القائمة</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

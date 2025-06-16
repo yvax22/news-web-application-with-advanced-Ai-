@@ -1,0 +1,93 @@
+﻿@model List<dynamic>
+@{
+    ViewData["Title"] = "الأخبار الموصى بها لك";
+    var defaultImg = Url.Content("~/images/default-news.png");
+    var likesDict = ViewBag.LikesDict as Dictionary<int, int>;
+    var commentsDict = ViewBag.CommentsDict as Dictionary<int, int>;
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">📰 الأخبار الموصى بها لك</h2>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-info text-center">
+            لا توجد توصيات حالياً.
+        </div>
+    }
+    else
+    {
+        <p class="text-muted text-center">📊 عدد التوصيات: @Model.Count</p>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            @foreach (var item in Model)
+            {
+                string imgSrc;
+
+                if (!string.IsNullOrEmpty(item.image) 
+                    && item.image.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+                {
+                    imgSrc = item.image;
+                }
+                else if (!string.IsNullOrEmpty(item.image))
+                {
+                    imgSrc = Url.Content(item.image.StartsWith("/") ? "~" + item.image : "~/images/" + item.image);
+
+                }
+                else
+                {
+                    imgSrc = defaultImg;
+                }
+
+                <div class="col">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">
+                                <a asp-action="Details"
+                                   asp-controller="News"
+                                   asp-route-id="@item.NewsId"
+                                   class="text-decoration-none text-primary">
+                                    @item.Title
+                                </a>
+                            </h5>
+                            <p class="card-text">@item.Abstract</p>
+                        </div>
+                        <img src="@imgSrc" class="card-img-top" style="height: 200px; object-fit: cover;" alt="صورة الخبر" />
+
+
+                              <div class="d-flex justify-content-between align-items-center px-3 pb-2">
+                                <form asp-action="ToggleLike" asp-controller="News" method="post">
+                                    <input type="hidden" name="newsId" value="@item.NewsId" />
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">
+                                        ❤️ أعجبني
+                                        <span class="badge bg-danger">
+                                            @{
+                                                var countlike = (likesDict != null && likesDict.ContainsKey(@item.NewsId)) ? likesDict[@item.NewsId] : 0;
+                                            }
+                                            @countlike
+                                        </span>
+                                    </button>
+                                </form>
+
+                                <a asp-action="AllNews"
+                                   asp-controller="News"
+                                   asp-route-id="@item.NewsId"
+                                   class="btn btn-outline-primary btn-sm">
+                                    💬 
+                                    <span class="badge bg-primary">
+                                        @{
+                                            var countcomments = (commentsDict != null && commentsDict.ContainsKey(@item.NewsId)) ? commentsDict[@item.NewsId] : 0;
+                                        }
+                                        @countcomments
+                                    </span>
+                                </a>
+                            </div>
+
+
+                    </div>
+                </div>
+
+                            
+            }
+        </div>
+    }
+</div>

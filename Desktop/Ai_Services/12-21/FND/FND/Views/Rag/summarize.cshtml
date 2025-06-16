@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "📰 تلخيص الأخبار";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+
+    <div class="row shadow-lg rounded-4 overflow-hidden" style="background: linear-gradient(to top left, #f0ebf8, #f8f9ff); min-height: 400px;">
+        <!-- مربع الإدخال -->
+        <div class="col-md-6 p-4 border-end" style="background-color: #ffffff;">
+            <form id="summarizeForm" method="post">
+                <label for="newsText" class="form-label">📝 أدخل أو الصق نصك هنا:</label>
+                <textarea id="newsText" name="text" rows="12" class="form-control rounded-3 border-primary" placeholder="أدخل محتوى الخبر هنا..." required></textarea>
+                <button type="submit" class="btn btn-outline-primary mt-3 w-100 fw-bold">🔍 توليد الملخص</button>
+            </form>
+        </div>
+
+        <!-- مربع النتيجة -->
+        <div class="col-md-6 p-4">
+            <div id="loading" class="text-center mt-5" style="display: none;">
+                <div class="spinner-border text-info" role="status"></div>
+                <p class="mt-2">⏳ جاري التلخيص، يرجى الانتظار...</p>
+            </div>
+
+            <div id="result" class="alert alert-info d-none shadow-sm mt-4" style="font-size: 1rem;">
+                <h5 class="mb-3">📌 الملخص:</h5>
+                <p id="summaryText" class="text-dark lh-lg"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    document.getElementById("summarizeForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const newsText = document.getElementById("newsText").value;
+        const loading = document.getElementById("loading");
+        const result = document.getElementById("result");
+        const summaryText = document.getElementById("summaryText");
+
+        loading.style.display = "block";
+        result.classList.add("d-none");
+        summaryText.textContent = "";
+
+        try {
+            const formData = new FormData();
+            formData.append("text", newsText);
+
+            const response = await fetch("http://localhost:8500/summarize/form", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (data.summary) {
+                summaryText.textContent = data.summary;
+                result.classList.remove("d-none");
+            } else {
+                summaryText.textContent = "❌ حدث خطأ أثناء التلخيص.";
+                result.classList.remove("d-none");
+            }
+        } catch (err) {
+            summaryText.textContent = "❌ حدث خطأ في الاتصال بالخدمة.";
+            result.classList.remove("d-none");
+        } finally {
+            loading.style.display = "none";
+        }
+    });
+</script>
+}

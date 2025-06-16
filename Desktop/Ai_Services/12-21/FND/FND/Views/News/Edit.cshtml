@@ -1,0 +1,70 @@
+﻿@model FND.Models.News
+@{
+    ViewBag.Title = "Edit";
+}
+
+<style>
+    .edit-container {
+        max-width: 600px;
+        margin: 50px auto;
+        background: linear-gradient(to right, #8e9eab, #eef2f3);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-label {
+        font-weight: 600;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+    }
+</style>
+
+<div class="edit-container">
+    <h2>📝 Edit News</h2>
+
+    <form action="/News/SaveEdit/@Model.Id" method="post">
+        <div class="mb-3">
+            <label for="Title" class="form-label">Title</label>
+            <input type="text" name="Title" id="Title" class="form-control" value="@Model.Title" required />
+        </div>
+
+        <div class="mb-3">
+            <label for="Content" class="form-label">Content</label>
+            <textarea name="Content" id="Content" class="form-control" rows="4" required>@Model.Content</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input type="text" name="image" id="image" class="form-control" value="@Model.image" />
+        </div>
+
+        <div class="mb-3">
+            <label for="CategoryId" class="form-label">Category</label>
+           <select required name="CategoryId" class="form-control">
+            <option value="0">--Select--</option>
+            @foreach (var item in ViewBag.cats)
+            {
+                <text>
+                    @if (item.Id == Model.CategoryId)
+                    {
+                        <option value="@item.Id" selected>@item.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </text>
+            }
+        </select>
+        </div>
+
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">💾 Save Changes</button>
+        </div>
+    </form>
+</div>

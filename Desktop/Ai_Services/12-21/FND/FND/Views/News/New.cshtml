@@ -1,0 +1,65 @@
+﻿@model FND.Models.News
+@{
+    ViewData["Title"] = "Create News";
+}
+
+<div class="container mt-5">
+    <div class="card mx-auto shadow" style="max-width: 600px; background: linear-gradient(to bottom right, #8f94fb, #4e54c8); border-radius: 1rem;">
+        <div class="card-body text-white">
+            <h3 class="text-center mb-4">📝 Add News</h3>
+
+            <form method="post" enctype="multipart/form-data" action="/News/New">
+                <div class="form-group mb-3">
+                    <label for="Title">Title</label>
+                    <input required type="text" name="Title" class="form-control" value="@Model.Title" />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="Content">Content</label>
+                    <textarea required name="Content" class="form-control" rows="4">@Model.Content</textarea>
+                </div>
+
+                
+
+                <div class="form-group mb-3">
+                    <label for="CategoryId">Category</label>
+                     <select required name="CategoryId" class="form-control">
+            <option value="0">--Select--</option>
+            @foreach (var item in ViewBag.cats)
+            {
+                <text>
+                    @if (item.Id == Model.CategoryId)
+                    {
+                        <option value="@item.Id" selected>@item.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </text>
+            }
+        </select>
+                </div>
+
+               
+
+                <div class="form-group mb-4">
+                    <label for="image">Select Image</label>
+                    <select name="image" class="form-select">
+                        <option value="">--Select Image--</option>
+                        @foreach (var img in ViewBag.images)
+                        {
+                            <option value="@img">@img</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-light fw-bold">✅ Save News</button>
+                </div>
+            </form>
+
+            
+        </div>
+    </div>
+</div>

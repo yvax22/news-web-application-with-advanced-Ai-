@@ -1,0 +1,175 @@
+﻿@model List<FND.Models.News>
+@{
+    ViewData["Title"] = "All News";
+    Layout = "_Layout";
+
+    int page = ViewBag.Page ?? 1;
+    int pageSize = ViewBag.PageSize ?? 20;
+    int totalPages = ViewBag.TotalPages ?? 1;
+    int groupSize = 10;
+    int currentGroup = (page - 1) / groupSize;
+    int startPage = currentGroup * groupSize + 1;
+    int endPage = Math.Min(startPage + groupSize - 1, totalPages);
+
+    string defaultImg = Url.Content("~/images/default-news.png");
+    var likesDict = ViewBag.LikesCount as Dictionary<int, int>;
+    var commentsDict = ViewBag.CommentsDict as Dictionary<int, int>;
+    var topLiked = ViewBag.TopLiked as List<FND.Models.News>;
+}
+
+<style>
+    .news-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 30px;
+    }
+
+    .news-cards .card {
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .news-cards .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .carousel .card {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .carousel .card-body {
+        background-color: #fff;
+    }
+
+    .carousel .card-title {
+        font-size: 1.4rem;
+        color: #333;
+    }
+</style>
+
+<!-- Carousel -->
+<div class="container my-5">
+    <div id="importantNewsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+            @if (topLiked != null && topLiked.Any())
+            {
+                @foreach (var pair in topLiked.Select((news, idx) => new { news, idx }))
+                {
+                    var item = pair.news;
+                    string imgSrc = !string.IsNullOrEmpty(item.image) && item.image.StartsWith("http")
+                        ? item.image
+                        : (!string.IsNullOrEmpty(item.image) ? Url.Content("~/images/" + item.image) : defaultImg);
+
+                    <div class="carousel-item @(pair.idx == 0 ? "active" : "")">
+                        <div class="card mx-auto" style="max-width: 900px;">
+                            <img src="@imgSrc" class="card-img-top" style="height: 420px; object-fit: cover;" />
+                            <div class="card-body text-center bg-white">
+                                <h3 class="card-title">@item.Title</h3>
+                                <p class="text-muted">@item.Abstract</p>
+                                <small class="text-secondary">@item.CreatedAt:dd/MM/yyyy</small>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#importantNewsCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#importantNewsCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+</div>
+
+<!-- News Cards -->
+<div class="container news-cards">
+    @foreach (var item in Model)
+    {
+        var likeCount = likesDict != null && likesDict.ContainsKey(item.Id) ? likesDict[item.Id] : 0;
+        var commentCount = commentsDict != null && commentsDict.ContainsKey(item.Id) ? commentsDict[item.Id] : 0;
+
+        string imgSrc = !string.IsNullOrEmpty(item.image) && item.image.StartsWith("http")
+            ? item.image
+            : (!string.IsNullOrEmpty(item.image) ? Url.Content("~/images/" + item.image) : defaultImg);
+
+        <div class="card bg-light text-dark">
+            <img src="@imgSrc" class="card-img-top" style="height: 200px; object-fit: cover;" />
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a asp-action="Details" asp-controller="News" asp-route-id="@item.Id" class="text-decoration-none text-dark">
+                        @(item.Title.Length > 80 ? item.Title.Substring(0, 80) + "..." : item.Title)
+                    </a>
+                </h5>
+                <p class="card-text text-muted" style="font-size: 14px;">
+                    @(item.Abstract?.Length > 150 ? item.Abstract.Substring(0, 150) + "..." : item.Abstract)
+                </p>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <button class="btn btn-outline-danger btn-sm toggle-like" data-news-id="@item.Id">
+                        ❤️ أعجبني <span class="badge bg-danger like-count">@likeCount</span>
+                    </button>
+                    <a asp-action="Details" asp-controller="News" asp-route-id="@item.Id" class="btn btn-outline-primary btn-sm">
+                        💬 <span class="badge bg-primary">@commentCount</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<!-- Pagination -->
+<div class="container my-4 d-flex justify-content-center">
+    <nav>
+        <ul class="pagination">
+            @if (startPage > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-route-page="@(startPage - 1)">«</a>
+                </li>
+            }
+
+            @for (int i = startPage; i <= endPage; i++)
+            {
+                <li class="page-item @(i == page ? "active" : "")">
+                    <a class="page-link" asp-route-page="@i">@i</a>
+                </li>
+            }
+
+            @if (endPage < totalPages)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-route-page="@(endPage + 1)">»</a>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>
+
+@section Scripts {
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".toggle-like").click(function () {
+            const button = $(this);
+            const newsId = button.data("news-id");
+
+            $.ajax({
+                type: "POST",
+                url: "/News/ToggleLikeAjax",
+                data: { newsId: newsId },
+                success: function (res) {
+                    if (res.success) {
+                        button.find(".like-count").text(res.likeCount);
+                    }
+                },
+                error: function () {
+                    alert("حدث خطأ أثناء تسجيل الإعجاب.");
+                }
+            });
+        });
+    });
+</script>
+}

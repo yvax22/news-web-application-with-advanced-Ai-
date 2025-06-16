@@ -1,0 +1,10 @@
+@model List<ChatHistory>
+<h3>📜 سجل المحادثات</h3>
+@foreach (var item in Model)
+{
+    <div class="border rounded p-3 mb-3 bg-light">
+        <div><strong>🧑 السؤال:</strong> @item.Question</div>
+        <div><strong>🤖 الجواب:</strong> @item.Answer</div>
+        <small class="text-muted">🕒 @item.CreatedAt</small>
+    </div>
+}

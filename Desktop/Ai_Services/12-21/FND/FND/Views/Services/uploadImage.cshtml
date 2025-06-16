@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "رفع صورة";
+}
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow-sm p-4" style="max-width: 500px; width: 100%;">
+        <h3 class="text-center mb-4">📤 رفع صورة</h3>
+
+        <form method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="image" class="form-label">اختر الصورة:</label>
+                <input class="form-control" type="file" id="image" name="image" accept="image/*" required />
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg">
+                    رفع الصورة
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+﻿@model List<News>
+
+<div class="container row text-center">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 pb-3">
+            <div class="card h-100 shadow-sm">
+
+                <!-- عند الضغط على الصورة ينتقل للتفاصيل -->
+                <a asp-controller="News" asp-action="Details" asp-route-id="@item.Id">
+                    <img class="card-img-top" src="~/images/@item.image" alt="صورة الخبر" style="object-fit: cover; height: 200px;">
+                </a>
+
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <!-- عند الضغط على العنوان ينتقل للتفاصيل -->
+                        <a asp-controller="News" asp-action="Details" asp-route-id="@item.Id" class="text-decoration-none text-dark">
+                            @item.Title
+                        </a>
+                    </h5>
+
+                    <!-- المحتوى (مُختصر إن أردت) -->
+                    <p class="card-text">
+                        @(item.Content?.Length > 150 ? item.Content.Substring(0, 150) + "..." : item.Content)
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

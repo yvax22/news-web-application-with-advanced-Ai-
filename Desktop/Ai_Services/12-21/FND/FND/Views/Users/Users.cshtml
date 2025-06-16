@@ -1,0 +1,38 @@
+﻿@model List<ApplicationUser>
+
+<div class="container my-4">
+    <h3 class="text-center mb-4">📋 قائمة المستخدمين</h3>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover text-center" dir="rtl">
+            <thead class="bg-white">
+                <tr>
+                    <th>الاسم</th>
+                    <th>العنوان</th>
+                    <th>الحالة</th>
+                    <th>رقم الهاتف</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.UserName</td>
+                        <td>@item.Address</td>
+                        <td>
+                            @if (item.IsActive)
+                            {
+                                <span class="badge bg-success">نشط</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">غير نشط</span>
+                            }
+                        </td>
+                        <td>@item.PhoneNumber</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

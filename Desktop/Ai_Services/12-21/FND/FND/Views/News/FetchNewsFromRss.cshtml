@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "جلب الأخبار من RSS";
+}
+
+<!-- حاوية التوسيط الكامل -->
+<div class="d-flex flex-column justify-content-center align-items-center min-vh-100">
+
+    <h2 class="text-center mb-4">📥 جلب الأخبار من RSS</h2>
+
+    @if (TempData["msg"] != null)
+    {
+        <div class="alert alert-success text-center w-75">@TempData["msg"]</div>
+    }
+
+    <form method="post" asp-action="FetchNewsFromRss" class="text-center">
+        <button type="submit" class="btn btn-primary btn-lg">
+            🔄 جلب أحدث الأخبار الآن
+        </button>
+    </form>
+</div>

@@ -1,0 +1,33 @@
+﻿@model FND.ViewModel.AssignAdminViewModel
+
+@{
+    ViewData["Title"] = "AddAdmin";
+}
+
+
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow-sm p-4" style="width: 100%; max-width: 500px;">
+        <h3 class="text-center mb-4">➕أضافة أدمن</h3>
+
+        <form asp-action="AddAdmin">
+            <div asp-validation-summary="All" class="alert alert-danger"></div>
+
+            <div class="mb-3">
+                <label for="SelectedUserId" class="form-label">اختر المستخدم</label>
+                <select asp-for="SelectedUserId" asp-items="Model.Users" class="form-control" required></select>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary w-100">تعيين كـ Admin</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

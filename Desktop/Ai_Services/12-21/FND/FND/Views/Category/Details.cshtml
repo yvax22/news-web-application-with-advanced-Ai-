@@ -1,0 +1,23 @@
+﻿@model Category
+
+<div class="container my-5">
+    <div class="card shadow-sm p-4">
+        <h3 class="text-center mb-4">📁 تفاصيل التصنيف</h3>
+
+        <ul class="list-group list-group-flush mb-3">
+            <li class="list-group-item">
+                <strong>الرقم:</strong> @Model.Id
+            </li>
+            <li class="list-group-item">
+                <strong>اسم التصنيف:</strong> @Model.Name
+            </li>
+            <li class="list-group-item">
+                <strong>عدد الأخبار:</strong> @(Model.News?.Count ?? 0)
+            </li>
+        </ul>
+
+        <div class="text-center">
+            <a href="/Category/Index" class="btn btn-outline-primary">🔙 الرجوع للقائمة</a>
+        </div>
+    </div>
+</div>

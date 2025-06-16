@@ -1,0 +1,26 @@
+﻿@model List<News> 
+@foreach (var item in Model)
+{
+    @if (@item.Id == 1)
+    {
+        <div class="col-md-4 pb-1 pb-md-0">
+            <div class="card">
+
+                <p class="card-text">@item.Content</p>
+
+                <div id="comments-list-@item.Id">
+                    <!-- سيتم تحميل التعليقات هنا ديناميكيًا -->
+                                 </div>
+                <div class="comments-section mt-2" id="news-@item.Id">
+                    <div class="comments-section mt-2" id="news-@item.Id">
+
+                    </div>
+                    <textarea class="form-control comment-input mb-2" id="comment-@item.Id" rows="1" placeholder="أضف تعليقاً"></textarea>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="addComment(@item.Id)">إرسال</button>
+                </div>
+            </div>
+        </div>
+    }
+
+}
+<a href="/News/AllNews">Back To List</a>

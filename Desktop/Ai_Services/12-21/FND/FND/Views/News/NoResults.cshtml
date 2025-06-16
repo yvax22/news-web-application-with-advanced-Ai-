@@ -1,0 +1,60 @@
+﻿<style>
+    .no-results {
+        text-align: center;
+        padding: 50px 20px;
+        animation: fadeIn 1.5s ease-in;
+    }
+
+    .no-results-icon {
+        font-size: 80px;
+        color: #ccc;
+        margin-bottom: 20px;
+        animation: bounce 2s infinite;
+    }
+
+    .no-results-text {
+        font-size: 24px;
+        color: #666;
+        margin-bottom: 15px;
+        animation: slideIn 1s ease-out;
+    }
+
+    .no-results-subtext {
+        font-size: 16px;
+        color: #999;
+        animation: slideIn 1s ease-out 0.3s;
+    }
+
+     fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+     bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+    }
+
+     slideIn {
+        from {
+            transform: translateX(-50px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+</style>
+
+<div class="no-results">
+    <div class="no-results-icon">
+        <i class="fas fa-search"></i>
+    </div>
+    <div class="no-results-text">
+        عذراً، لم نجد أي نتائج للبحث
+    </div>
+    <div class="no-results-subtext">
+        حاول تغيير كلمات البحث 
+    </div>
+</div>

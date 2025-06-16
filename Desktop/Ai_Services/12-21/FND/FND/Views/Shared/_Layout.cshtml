@@ -1,0 +1,378 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>News App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <style>
+        footer {}
+
+        .social-icons i {
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        .user-icon {
+            font-size: 18px;
+            color: white;
+        }
+
+        .sidebar {
+            width: 220px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            background-color: #343a40;
+            padding: 1rem;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 1050;
+        }
+
+        .sidebar ul li a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .sidebar ul li a:hover {
+            color: #0d6efd;
+        }
+
+        body.dark-mode {
+            background-color: #121212 !important;
+            color: #e0e0e0 !important;
+        }
+
+        body.dark-mode .navbar,
+        body.dark-mode .card,
+        body.dark-mode .dropdown-menu {
+            background-color: #1e1e1e !important;
+            color: #fff !important;
+        }
+
+        body.dark-mode a {
+            color: #90caf9 !important;
+        }
+
+        .theme-toggle button {
+            font-size: 1.2rem;
+        }
+        .card, .dropdown-menu {
+    border-radius: 1rem !important;
+}
+
+    .btn-primary, .btn-outline-success {
+        background-color: #4e54c8;
+        border-color: #4e54c8;
+    }
+
+    .btn-primary:hover, .btn-outline-success:hover {
+        background-color: #3b40b2;
+        border-color: #3b40b2;
+    }
+
+    .navbar, footer {
+        background-color: #2c2f74 !important;
+    }
+
+    .navbar a.nav-link, .navbar .navbar-brand {
+        color: #ffffff !important;
+    }
+
+    .navbar a.nav-link:hover {
+        color: #d0d2ff !important;
+    }
+
+    footer {
+        border-top: 1px solid #444;
+    }
+   body.dark-mode {
+    background-color: #2e2e2e !important;
+    color: #e0e0e0 !important;
+    }
+
+    body.dark-mode .navbar,
+    body.dark-mode .card,
+    body.dark-mode .dropdown-menu,
+    body.dark-mode footer {
+        background-color: #1e1e1e !important;
+        color: #ffffff !important;
+    }
+
+    body.dark-mode .btn,
+    body.dark-mode .form-control {
+        background-color: #2c2c2c;
+        color: #ffffff;
+        border-color: #444;
+    }
+
+    body.dark-mode .btn:hover {
+        background-color: #3b40b2 !important;
+    }
+    .navbar a.nav-link,
+    .navbar .navbar-brand {
+        color: #ffffff !important;
+    }
+
+    .navbar a.nav-link:hover {
+        color: #d0d2ff !important;
+    }
+
+    .nav-item.dropdown:hover .dropdown-menu
+    {
+    display: block;
+    margin-top: 0; /* تمنع التأخير */
+    }
+   .category-sidebar-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .category-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 240px;
+        height: 100vh;
+        background: linear-gradient(to bottom right, #343a40, #4b4f56);
+        color: white;
+        z-index: 2000;
+        display: none;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .category-sidebar a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+    }
+
+    .category-sidebar-container:hover .category-sidebar {
+        display: block;
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+    #footer {
+    background-color: #f8f9fa;
+    color: #212529;
+    }
+    body.dark-mode #footer {
+    background-color: #212529;
+    color: #ffffff;
+    }
+
+</style>
+</head>
+<body class="d-flex flex-column min-vh-100" style="background: linear-gradient(to right, #4e54c8, #8f94fb); font-family: 'Segoe UI', sans-serif;">
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4e54c8;">
+     @inject FND.Models.Entity context
+@{
+    var categories = context.Categories.OrderBy(c => c.Name).ToList();
+}
+
+<div class="category-sidebar-container">
+    <button class="btn btn-outline-light" id="categorySidebarBtn">
+        <i class="bi bi-list"></i> 
+    </button>
+
+    <div class="category-sidebar" id="categorySidebar">
+        <h5 class="text-white p-3">الفئات</h5>
+        <ul class="list-unstyled px-3">
+            @foreach (var cat in categories)
+            {
+                <li>
+                    <a class="text-white d-block py-2"
+                       asp-controller="News"
+                       asp-action="ByCategory"
+                       asp-route-id="@cat.Id">
+                        @cat.Name
+                    </a>
+
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+    <div class="container-fluid">
+    
+
+        <!-- روابط رئيسية -->
+        <a class="navbar-brand" asp-area="" asp-controller="News" asp-action="AllNews">YaseenNews</a>
+        <a class="navbar-brand" asp-area="" asp-controller="News" asp-action="RecommendedNews">الأخبار الموصى بها</a>
+
+        <!-- زر التوسيع للهاتف -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- العناصر القابلة للطي -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+ 
+               
+
+                <!-- أدوات ذكية -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="toolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        الخدمات الذكية
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="toolsDropdown">
+                        <li><a class="dropdown-item" asp-controller="Rag" asp-action="Chat"> المساعد الذكي</a></li>
+                        <li><a class="dropdown-item" asp-controller="Rag" asp-action="History"> سجل المساعد</a></li>
+
+                    </ul>
+                </li>
+            </ul>
+            <li class="nav-item">
+            </li>
+           
+
+            <!-- 🔍 شريط البحث -->
+            <div class="d-flex align-items-center position-relative">
+                <button type="button" id="toggleSearchBtn" class="btn btn-outline-light">
+                    <i class="bi bi-search"></i>
+                </button>
+
+                <form id="searchForm" class="d-flex ms-2" action="/News/SearchResult" method="get" style="display: none;">
+                    <input class="form-control me-2" type="search" name="searchTerm" placeholder="Search" autofocus>
+                    <button class="btn btn-outline-success" type="submit">بحث</button>
+                </form>
+            </div>
+
+
+            <!-- الوضع الليلي -->
+            <div class="theme-toggle d-flex align-items-center ms-3">
+                <button id="lightModeBtn" class="btn btn-sm btn-outline-secondary me-1" title="الوضع النهاري">
+                    <i class="bi bi-sun-fill"></i>
+                </button>
+                <button id="darkModeBtn" class="btn btn-sm btn-outline-dark" title="الوضع الليلي">
+                    <i class="bi bi-moon-stars-fill"></i>
+                </button>
+            </div>
+
+            <!-- قائمة الحساب -->
+            <div class="dropdown ms-3">
+                <a class="btn btn-secondary dropdown-toggle btn-sm" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                     <!-- مرحبًا -->
+                        @if (User?.Identity?.IsAuthenticated == true)
+                        {
+                            <div class="mx-auto text-white fw-bold d-none d-lg-block">
+                                مرحباً @User.Identity.Name
+                            </div>
+                        }
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                    @if (User?.Identity?.IsAuthenticated != true)
+                    {
+                        <li><a class="dropdown-item" asp-controller="Account" asp-action="Login">تسجيل الدخول</a></li>
+                        <li><a class="dropdown-item" asp-controller="Account" asp-action="Register">إنشاء حساب</a></li>
+                    }
+                    else
+                    {
+                        @if (User.IsInRole("Admin") || User.IsInRole("Publisher") || User.IsInRole("User"))
+                        {
+                            <li><a class="dropdown-item" asp-controller="Account" asp-action="AddAdmin"><i class="fas fa-user-shield"></i> إضافة مشرف</a></li>
+                            <li><a class="dropdown-item" asp-controller="Account" asp-action="AddPublisher"><i class="fas fa-user-edit"></i> إضافة ناشر</a></li>
+                            <li><a class="dropdown-item" asp-controller="Users" asp-action="Users"><i class="fas fa-users"></i> إدارة المستخدمين</a></li>
+                            <li><a class="dropdown-item" asp-controller="roles" asp-action="New"><i class="fas fa-user-tag"></i> إدارة الأدوار</a></li>
+                            <li><a class="dropdown-item" asp-controller="Category" asp-action="Index"><i class="fas fa-folder-open"></i> إدارة التصنيفات</a></li>
+                            <li><a class="dropdown-item" asp-controller="Services" asp-action="uploadImage"><i class="fas fa-upload"></i> رفع صورة</a></li>
+                            <li><a class="dropdown-item" asp-controller="News" asp-action="NewsAdmin"><i class="fas fa-cogs"></i> إدارة الأخبار</a></li>
+                            <li><a class="dropdown-item" asp-controller="News" asp-action="New"><i class="fas fa-plus-circle"></i> إضافة خبر</a></li>
+                            <li><a class="dropdown-item" asp-controller="News" asp-action="FetchNewsFromRss"><i class="fas fa-rss"></i> جلب الأخبار</a></li>
+                        }
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item text-danger" asp-controller="Account" asp-action="Logout"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a></li>
+                    }
+
+                </ul>
+            </div>
+        </div> <!-- 🔚 إغلاق container-fluid -->
+    </div>
+</nav>
+
+</header>
+
+<div class="container mt-4">
+    <main role="main" class="flex-fill">
+        @RenderBody()
+    </main>
+</div>
+
+   <footer id="footer" class="text-white text-center py-3 mt-auto">
+        <div class="container">
+            <div class="d-flex justify-content-center social-icons mb-2">
+                <a href="https://www.facebook.com/yaseen.mahmoud.9678067/"><i class="fab fa-facebook text-white"></i></a>
+                <a href="#"><i class="fab fa-twitter text-white"></i></a>
+                <a href="#"><i class="fab fa-instagram text-white"></i></a>
+            </div>
+            <p class="mb-0">&copy; 2025 YaseenNews. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+<script>
+    const sidebar = document.getElementById('sidebar');
+    const toggle = document.getElementById('sidebarToggle');
+
+    toggle.addEventListener('mouseenter', () => {
+        sidebar.style.transform = 'translateX(0)';
+    });
+
+    sidebar.addEventListener('mouseleave', () => {
+        sidebar.style.transform = 'translateX(-100%)';
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+
+        document.getElementById('lightModeBtn')?.addEventListener('click', function () {
+            document.body.classList.remove('dark-mode');
+            localStorage.setItem('theme', 'light');
+        });
+
+        document.getElementById('darkModeBtn')?.addEventListener('click', function () {
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+        });
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const toggleBtn = document.getElementById("toggleSearchBtn");
+        const searchForm = document.getElementById("searchForm");
+
+        toggleBtn.addEventListener("click", function () {
+            // تبديل الظهور
+            if (searchForm.style.display === "none" || searchForm.style.display === "") {
+                searchForm.style.display = "flex";
+                searchForm.querySelector("input").focus();
+            } else {
+                searchForm.style.display = "none";
+            }
+        });
+    });
+    document.addEventListener("click", function (e) {
+    if (!e.target.closest("#searchForm") && !e.target.closest("#toggleSearchBtn")) {
+        searchForm.style.display = "none";
+    }
+});
+
+</script>
+
+
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
